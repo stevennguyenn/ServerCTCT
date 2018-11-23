@@ -26,7 +26,7 @@
 			echo json_encode($student);
 			return;
 		}
-		echo "Account not exist";
+		echo json_encode($student);
 	return;
 	}
 	echo "Connect failed";
