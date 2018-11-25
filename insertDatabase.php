@@ -26,11 +26,11 @@
 		return;
 	}
 
-	$query = "INSERT INTO account VALUES (null,'$fullname','$account','$password','$avatar')";
+	$query = "INSERT INTO account(id,fullname,account,password,avatar) VALUES (null,'$fullname','$account','$password','$avatar')";
 	$data = mysqli_query($con,$query);
 
 	if ($data){
-		echo "Success";
+		echo "Successed";
 	} else {
 		echo "Failed";
 	}
