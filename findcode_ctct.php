@@ -9,9 +9,10 @@
 	if ($data) {
 		$row = mysqli_fetch_assoc($data);
 		if ($row != null){
-			echo "successed";
+			echo "Successed";
 			return;
 		}
+		echo "Failed";
 	}
-	echo "failed";
+	echo "Failed";
 ?>

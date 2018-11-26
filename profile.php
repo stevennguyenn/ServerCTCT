@@ -30,7 +30,7 @@
 			echo json_encode($profile);
 			return;
 		}
-		echo "Access diened";
+		echo json_encode($profile);
 		return;
 	}
 	echo "Access diened";
