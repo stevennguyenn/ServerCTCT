@@ -2,7 +2,7 @@
 	require "C:\\xampp\htdocs\CTCT\connect.php";
 	include("book.php");
 
-	$query = "SELECT * from vatly2 LIMIT 0,20";
+	$query = "SELECT id,name,ratio from vatly2 LIMIT 0,20";
 	$data = mysqli_query($con,$query);
 
 	if ($data){
