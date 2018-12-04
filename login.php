@@ -3,10 +3,8 @@
 	header('Content-Type: text/html; charset=utf-8');
 	require "connect.php";
 
-	// $account = $_POST['account'];
-	// $password = $_POST['password'];
-	$account = 'chaunguyen4297';
-	$password = '123456789';
+	$account = $_POST['account'];
+	$password = $_POST['password'];
 	
 	class Student {
 		function Student($id,$fullname,$account,$password,$avatar){
@@ -29,9 +27,7 @@
 			echo json_encode($student);
 			return;
 		}
-		echo json_encode($student);
-	return;
+		return;
 	}
 	echo "Connect failed";
-
 ?>

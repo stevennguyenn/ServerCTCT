@@ -12,7 +12,7 @@
 		}
 	}
 
-	$query = "SELECT * FROM question";
+	$query = "SELECT * FROM question_giaitich1";
 	$data = mysqli_query($con,$query);
 	$question = array();
 	if ($data){
@@ -23,8 +23,6 @@
 			echo json_encode($question);
 			return;
 		}
-		echo "Data null";
-		return;
 	}
 	echo "Failed";
 ?>

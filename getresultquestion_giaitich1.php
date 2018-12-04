@@ -67,12 +67,12 @@
 			}
 		}
 		$ratio = $countPoint*5/10;
-
-		$query_insert = "INSERT INTO studenttest values ($id,$test_code,$countPoint)";
+		$query_insert = "INSERT INTO studenttest(id,test_code,point) values ('$id','$test_code','$countPoint')";
 		$insert = mysqli_query($con,$query_insert);
 		if ($insert){
-			$query_getresult = "SELECT point from studenttest where test_code = $test_code order by desc";
-			$get_all_point = mysqli_query($con,$query_getresult);
+
+			$query_get_result = "SELECT point FROM studenttest WHERE test_code = '$test_code' order by point desc";
+			$get_all_point = mysqli_query($con,$query_get_result);
 			if ($get_all_point){
 				$listpoint = array();
 				while ($row = mysqli_fetch_assoc($get_all_point)) {
@@ -80,16 +80,19 @@
 				}
 				if (count($listpoint) > 0){
 					$index =  array_search($countPoint, $listpoint);
-					if ($index != null){
-						$rate = $index."/".count($countPoint);
+					if ($index >= 0){
+						$rate = ($index+1)."/".count($listpoint);
 						echo json_encode(new Result($countPoint,$ratio,$rate));
+						return;
 					}
+					return;
 				}
+				return;
 			}
-			echo "Failed";
+			echo "Failed Get";
 			return;
 		}
-		echo "Failed";
+		echo "Failed Insert";
 		return;
 	}
 	echo "Failed";
