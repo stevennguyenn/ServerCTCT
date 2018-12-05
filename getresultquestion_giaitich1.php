@@ -2,9 +2,9 @@
 
 	require "connect.php";
 
+	$id = $_POST['id'];
 	$arrid = $_POST['arrid'];
 	$arrresult = $_POST['arrresult'];
-	$id = $_POST['id'];
 
 	if (count($arrid) == 0){
 		echo "Id null";
