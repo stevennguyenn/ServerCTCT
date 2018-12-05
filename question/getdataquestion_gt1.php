@@ -2,15 +2,18 @@
 	require "C:\\xampp\htdocs\CTCT\connect.php";
 	require "question.php";
 
-	$query = "SELECT * FROM question_giaitich1";
-	$data = mysqli_query($con,$query);
-	$question = array();
+	$test_code = $_POST['test_code'];
+
+
+	$query = "SELECT * FROM question_giaitich1 where test_code = '$test_code'";
+	$data = mysqli_query($con,$query); 
+	$result = array();
 	if ($data){
 		while ($row = mysqli_fetch_assoc($data)){
-			array_push($question, new Question($row['id'],$row['content_question'],$row['question_a'],$row['question_b'],$row['question_c'],$row['question_d']));
+			array_push($result, new Question($row['id'],$row['content_question'],$row['question_a'],$row['question_b'],$row['question_c'],$row['question_d']));
 		}
-		if (count($question) > 0) {
-			echo json_encode($question);
+		if (count($result) > 0) {
+			echo json_encode($result);
 			return;
 		}
 	}
