@@ -1,6 +1,8 @@
 <?php
 
-	require "connect.php";
+	require "C:\\xampp\htdocs\CTCT\connect.php";
+	require "result.php";
+	require "idandresult.php";
 
 	$id = $_POST['id'];
 	$arrid = $_POST['arrid'];
@@ -25,33 +27,29 @@
 		}
 		$arridString .= (','.(String)$arrid[$i]);
 	}
+
 	$arridString .= ")";
 	$arrid_result = array();
 
-	class IDandRESULT{	
-		function IDandRESULT($id,$result){
-			$this ->id = $id;
-			$this ->result = $result;
-		}
+	$insert = "";
 
-		function getID(){
-			return $this ->id;
+	for ($i = 0;$i < count($arrid);$i++) {
+		if ($i != count($arrid) -1){
+			$insert .= "(".$id.",".$arrid[$i].","."'".$arrresult[$i]."'"."),";
+			continue;
 		}
-
-		function getResult(){
-			return $this ->result;
-		}
+		$insert .= "(".$id.",".$arrid[$i].","."'".$arrresult[$i]."'".")";
 	}
 
-	class Result{
-		function Result($point,$ratio,$rate){
-			$this ->point = $point;
-			$this ->ratio = $ratio;
-			$this ->rate = $rate;
-		}
+	$query_insert_temp = "INSERT into value_question_user_gt2 values $insert";
+	$data_insert_value = mysqli_query($con,$query_insert_temp);
+
+	if (!$data_insert_value){
+		echo "Failed";
+		return;
 	}
 
-	$query = "SELECT id,result,test_code from question_giaitich1 WHERE id IN $arridString";
+	$query = "SELECT id,result,test_code from question_giaitich2 WHERE id IN $arridString";
 	$data = mysqli_query($con,$query);
 	$countPoint = 0;
 	$ratio = 0;
@@ -70,7 +68,6 @@
 		$query_insert = "INSERT INTO studenttest(id,test_code,point) values ('$id','$test_code','$countPoint')";
 		$insert = mysqli_query($con,$query_insert);
 		if ($insert){
-
 			$query_get_result = "SELECT point FROM studenttest WHERE test_code = '$test_code' order by point desc";
 			$get_all_point = mysqli_query($con,$query_get_result);
 			if ($get_all_point){
