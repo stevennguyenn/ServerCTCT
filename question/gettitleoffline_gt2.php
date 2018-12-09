@@ -4,9 +4,10 @@
 
 	$id = $_POST['id'];
 
+
 	$query = "SELECT test_code,name,number_test 
 			  FROM test 
-              WHERE test_code NOT IN (select test_code from studenttest where id = '$id') and test_code like 'GT2\_%' AND test_status = 0";
+              WHERE test_code NOT IN (select test_code from studenttest where id = '$id') AND test_code like 'GT2\_%' AND test_status = 0";
 	$data  = mysqli_query($con,$query);
 
 	if ($data){

@@ -6,7 +6,7 @@
 	$query = "SELECT test.test_code,studenttest.point,test.name,test.number_test 
 			  FROM studenttest 
 			  LEFT JOIN test using(test_code)
-			  WHERE test_code LIKE 'GT2\_%' AND point != 0 AND id = '$id'";
+			  WHERE test_code LIKE 'GT2\_%'  AND id = '$id'";
 
 	$data = mysqli_query($con,$query);
 	if ($data){
@@ -20,7 +20,7 @@
 				array_push($result, new Tested($row['test_code'],$row['point'],$rate,$row['name'],$row['number_test']));
 			}
 		}
-		if (count($result) > 0 ){
+		if (count($result) >= 0 ){
 			echo json_encode($result);
 			return;
 		}

@@ -2,15 +2,17 @@
 	require "C:\\xampp\htdocs\CTCT\connect.php";
 	require "question.php";
 
-	$query = "SELECT * FROM question_vatly1";
-	$data = mysqli_query($con,$query);
-	$question = array();
+	$id = $_POST['id'];
+
+	$query = "SELECT * FROM question_giaitich1 WHERE test_code IN (SELECT test_code FROM test where test_status = 1 AND test_code LIKE 'VL1\_%') AND test_code NOT IN (SELECT test_code from studenttest where id = '$id')";
+	$data = mysqli_query($con,$query); 
+	$result = array();
 	if ($data){
 		while ($row = mysqli_fetch_assoc($data)){
-			array_push($question, new Question($row['id'],$row['content_question'],$row['question_a'],$row['question_b'],$row['question_c'],$row['question_d']));
+			array_push($result, new Question($row['id'],$row['content_question'],$row['question_a'],$row['question_b'],$row['question_c'],$row['question_d']));
 		}
-		if (count($question) > 0) {
-			echo json_encode($question);
+		if (count($result) >= 0) {
+			echo json_encode($result);
 			return;
 		}
 	}

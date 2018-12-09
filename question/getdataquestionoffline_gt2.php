@@ -2,9 +2,9 @@
 	require "C:\\xampp\htdocs\CTCT\connect.php";
 	require "question.php";
 
-	$id = $_POST['id'];
+	$test_code = $_POST['test_code'];
 
-	$query = "SELECT * FROM question_giaitich1 WHERE test_code IN (SELECT test_code FROM test where test_status = 1 AND test_code LIKE 'GT1\_%') AND test_code NOT IN (SELECT test_code from studenttest where id = '$id')";
+	$query = "SELECT * FROM question_giaitich2 WHERE test_code = '$test_code'";
 	$data = mysqli_query($con,$query); 
 	$result = array();
 	if ($data){
