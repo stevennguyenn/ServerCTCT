@@ -2,10 +2,13 @@
 	require "C:\\xampp\htdocs\CTCT\connect.php";
 	require "question.php";
 
+
 	$test_code = $_POST['test_code'];
 
 	$query = "SELECT * FROM question_giaitich1 WHERE test_code = '$test_code'";
+
 	$data = mysqli_query($con,$query); 
+
 	$result = array();
 	if ($data){
 		while ($row = mysqli_fetch_assoc($data)){
