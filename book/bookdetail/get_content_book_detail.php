@@ -21,7 +21,7 @@
 		$result_title_book  = null;
 		$result_information_book = null; 
 		while ($row = mysqli_fetch_assoc($data)){
-			 $result_title_book = new TitleBook("",$row['name_document'],$row['ratio']);
+			 $result_title_book = new TitleBook("",$row['name_document'],round($row['ratio']*10)/10);
 			 $result_information_book = new InformationBook($row['author'],"",$row['content'],$row['dateupload']);
 		}
 		echo json_encode(new Result($result_title_book,$result_information_book));

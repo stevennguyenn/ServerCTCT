@@ -20,7 +20,7 @@
 		$index = 0;
 
 		while ($row = mysqli_fetch_assoc($data)){
-			$temp = new Book($row['id'],$row['name_document'],$row['ratio']); 
+			$temp = new Book($row['id'],$row['name_document'],round($row['ratio']*10)/10); 
 			if ($index < 10){
 				array_push($array_book_ratio, $temp);
 				$index += 1;
