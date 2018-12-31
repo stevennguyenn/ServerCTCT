@@ -31,22 +31,22 @@
 			}
 
 			if ($row['ratio'] > 3){
-				$ratio5 = $ratio4 + 1;
+				$ratio4 = $ratio4 + 1;
 				continue;
 			}
 
 			if ($row['ratio'] > 2){
-				$ratio5 = $ratio3 + 1;
+				$ratio3 = $ratio3 + 1;
 				continue;
 			}
 
 			if ($row['ratio'] > 1){
-				$ratio5 = $ratio2 + 1;
+				$ratio2 = $ratio2 + 1;
 				continue;
 			}
 
 			if ($row['ratio'] > 0){
-				$ratio5 = $ratio1 + 1;
+				$ratio1= $ratio1 + 1;
 				continue;
 			}
 		}

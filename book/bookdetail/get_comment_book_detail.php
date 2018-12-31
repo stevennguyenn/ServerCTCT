@@ -4,8 +4,7 @@
 	require "full_comment.php";
 	require "get_title_comment.php";
 
-	// $id_book = $_POST["id_book"];
-	$id_book = "GT1_10104";
+	$id_book = $_POST["id_book"];
 
 	$query = "SELECT * from account inner join (SELECT * FROM USER_RATE_BOOK 
 		 			   WHERE id_book = '$id_book'
